@@ -1,54 +1,55 @@
-# ARES — Legal Bug Bounty Framework
+# ARES PRO — Passive Bug Bounty Framework
 
-ARES is a lightweight, modular and legal-first Bug Bounty automation framework designed for reconnaissance, surface mapping and safe passive analysis.
+ARES es un framework **pasivo y legal** para reconocimiento, mapeo y OSINT en Bug Bounty, diseñado para ser liviano, modular y seguro.
 
-## Philosophy
+## Filosofía
+ARES NO explota, NO ataca y NO daña objetivos. Su objetivo es automatizar el flujo de trabajo seguro y legal:
+**Reconocimiento → Mapeo de superficie → Controles pasivos → Evidencia → Informe**
 
-ARES does NOT exploit, attack or damage targets. It automates safe and legal Bug Bounty workflow:
+## Estructura del Proyecto
+```text
+ARES/
+├── cli/            # Interfaz de línea de comandos
+├── core/           # Motor central y orquestación
+├── agents/         # Agentes especializados (Reportes, etc.)
+├── modules/        # Módulos de escaneo (Recon, Web, OSINT)
+├── utils/          # Utilidades y validadores
+├── config/         # Configuración del sistema
+├── data/           # Almacenamiento de resultados crudos
+└── reports/        # Informes generados (JSON, Markdown)
+```
 
-Recon → Surface Mapping → Passive Checks → Evidence → Report
-
-## Legal Notice
-
-Use ONLY on:
-- Authorized Bug Bounty programs
-- Your own labs
-- Targets with written permission
-
-You are responsible for how you use ARES.
-
-## Installation (Termux / Linux)
-
+## Instalación
 ```bash
-pkg update && pkg upgrade -y
-pkg install python git -y
-
 git clone https://github.com/juanibarrasec-tech/ARES.git
 cd ARES
-
-python -m venv venv
-source venv/bin/activate
-
 pip install -r requirements.txt
 ```
 
-## Usage
-
+## Uso
+Para realizar un escaneo básico:
 ```bash
-python cli/ares.py -t example.com -m recon
+python cli/ares.py -t example.com
 ```
 
-### Modes:
-- **recon** → subdomains, whois, tech fingerprint
-- **web** → headers + basic security checks
-- **osint** → public exposure
+Para activar el modo automático (incluye OSINT extendido):
+```bash
+python cli/ares.py -t example.com --auto
+```
 
-## Roadmap
-- Subdomain takeover detector
-- JS secrets finder
-- API mapper
-- Auto CVSS scoring
-- HTML/PDF report generator
+## Módulos Incluidos
+- **Recon**: Descubrimiento de subdominios y consulta WHOIS.
+- **Web**: Análisis de encabezados de seguridad.
+- **OSINT**: Sugerencias de Google Dorks, Shodan y Wayback Machine.
+- **Reporting**: Generación automática de informes en formato JSON y Markdown.
+
+## Aviso Legal
+Usar SÓLO en:
+1. Programas de recompensas por errores (Bug Bounty) autorizados.
+2. Tus propios laboratorios.
+3. Objetivos con permiso escrito explícito.
+
+Usted es responsable del modo en que utiliza ARES. El framework cumple con las reglas de plataformas como HackerOne y Bugcrowd al ser 100% pasivo.
 
 ---
-ARES — Built for real hunters
+**ARES PRO — Creado para verdaderos cazadores.**

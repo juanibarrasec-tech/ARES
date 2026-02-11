@@ -1,0 +1,3 @@
+passive_only: true
+timeout: 10
+auto_report: true
